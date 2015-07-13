@@ -30,7 +30,7 @@ counter2(); // logs: 2
 alert(i); // 引用错误：i没有defind（因为i是存在于makeCounter内部）。
 ```
 
-很多情况下，我们不需要 makeCounter 多个实例，甚至某些 case下，我们也不需要显示的返回值，OK，往下看。
+很多情况下，我们不需要 makeCounter 多个实例，甚至某些 case 下，我们也不需要显示的返回值，OK，往下看。
 
 ## 问题的核心
 
@@ -217,13 +217,11 @@ counter.i; // undefined 因为i不是返回对象的属性
 i; // 引用错误: i 没有定义（因为i只存在于闭包）
 ```
 
-关于更多Module模式的介绍，请访问我的上一篇帖子：深入理解JavaScript系列（2）：全面解析Module模式 。
+关于更多Module模式的介绍，请访问我的上一篇帖子：深入理解JavaScript系列（2）：全面解析 Module 模式 。
 
 ## 更多阅读
 
 希望上面的一些例子，能让你对立即调用的函数表达（也就是我们所说的自执行函数）有所了解，如果你想了解更多关于 function 和 Module 模式的信息，请继续访问下面列出的网站：
-
-
 
 1. [ECMA-262-3 in detail. Chapter 5. Functions. ](http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/#question-about-surrounding-parentheses)- Dmitry A. Soshnikov  
 2. [Functions and function scope](https://developer.mozilla.org/en/JavaScript/Reference/Functions_and_function_scope) - Mozilla Developer Network  
@@ -231,6 +229,3 @@ i; // 引用错误: i 没有定义（因为i只存在于闭包）
 4. [全面解析 Module 模式](http://www.cnblogs.com/TomXu/archive/2011/12/30/2288372.html)- Ben Cherry（大叔翻译整理）  
 5. [Closures explained with JavaScript](http://skilldrick.co.uk/2011/04/closures-explained-with-javascript/) - Nick Morgan  
 
-## 同步与推荐
-
-深入理解 JavaScript 系列文章，包括了原创，翻译，转载等各类型的文章，如果对你有用，请推荐支持一把，给大叔写作的动力。

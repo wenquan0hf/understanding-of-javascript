@@ -2,12 +2,10 @@
 
 我们首先来看一下对象[Object]的概念，这也是 ECMASript 中最基本的概念。
 
-## 对象Object
+## 对象 Object
 
 ECMAScript 是一门高度抽象的面向对象(object-oriented)语言，用以处理 Objects 对象。当然，也有基本类型，但是必要时，也需要转换成 object 对象来用。
 
-> An object is a collection of properties and has a single prototype object. The prototype may be either an object or the null value.
-> 
 > Object 是一个属性的集合，并且都拥有一个单独的原型对象[prototype object]。这个原型对象[prototype object]可以是一个 object 或者 null 值。
 
 让我们来举一个基本 Object 的例子，首先我们要清楚，一个 Object 的 prototype 是一个内部的[[prototype]]属性的引用。
@@ -33,7 +31,6 @@ var foo = {
 
 原型对象也是普通的对象，并且也有可能有自己的原型，如果一个原型对象的原型不为 null 的话，我们就称之为原型链（prototype chain）。
 
-> A prototype chain is a finite chain of objects which is used to implemented inheritance and shared properties.  
 > 原型链是一个由对象组成的有限对象链由于实现继承和共享属性。
 
 想象一个这种情况，2 个对象，大部分内容都一样，只有一小部分不一样，很明显，在一个好的设计模式中，我们会需要重用那部分相同的，而不是在每个对象中重复定义那些相同的方法或者属性。在基于类[class-based]的系统中，这些重用部分被称为类的继承 – 相同的部分放入 class A，然后 class B 和 class C 从 A 继承，并且可以声明拥有各自的独特的东西。
@@ -132,7 +129,7 @@ console.log(
 
 现在，我们已经了解了基本的 object 原理，那么我们接下去来看看 ECMAScript 里面的程序执行环境[runtime program execution]. 这就是通常称为的“执行上下文堆栈”[execution context stack]。每一个元素都可以抽象的理解为 object。你也许发现了，没错，在 ECMAScript 中，几乎处处都能看到 object 的身影。
 
-##执行上下文栈(Execution Context Stack)
+## 执行上下文栈(Execution Context Stack)
 
 在 ECMASscript 中的代码有三种类型：global，function 和 eval。
 
@@ -175,7 +172,7 @@ ECMAScript 运行时系统就是这样管理代码的执行。
 
 如上所述，栈中每一个执行上下文可以表示为一个对象。让我们看看上下文对象的结构以及执行其代码所需的状态(state) 。
 
-##执行上下文(Execution Context)
+## 执行上下文(Execution Context)
 
 一个执行的上下文可以抽象的理解为 object。每一个执行的上下文都有一系列的属性（我们称为上下文状态），他们用来追踪关联代码的执行进度。这个图示就是一个 context 的结构。
 
@@ -185,15 +182,12 @@ ECMAScript 运行时系统就是这样管理代码的执行。
 
 除了这 3 个所需要的属性(`变量对象(variable object)`，`this 指针(this value)`，`作用域链(scope chain)` )，执行上下文根据具体实现还可以具有任意额外属性。接着，让我们仔细来看看这三个属性。
 
-##变量对象(Variable Object)
+## 变量对象(Variable Object)
 
-> A variable object is a scope of data related with the execution context. 
-> It’s a special object associated with the context and which stores variables and function declarations are being defined within the context.
-> 
-> 变量对象(variable object) 是与执行上下文相关的 数据作用域(scope of data) 。
-> 它是与上下文关联的特殊对象，用于存储被定义在上下文中的 变量(variables) 和 函数声明(function declarations) 。
+- 变量对象(variable object) 是与执行上下文相关的 数据作用域(scope of data) 。
+- 它是与上下文关联的特殊对象，用于存储被定义在上下文中的 变量(variables) 和 函数声明(function declarations) 。
 
-注意：函数表达式[function expression]（而不是函数声明[function declarations，区别请参考本系列第2章]）是不包含在VO[variable object]里面的。
+>注意：函数表达式[function expression]（而不是函数声明[function declarations，区别请参考本系列第2章]）是不包含在VO[variable object]里面的。
 
 变量对象（Variable Object）是一个抽象的概念，不同的上下文中，它表示使用不同的 object。例如，在 global 全局上下文中，变量对象也是全局对象自身[global object]。（这就是我们可以通过全局对象的属性来指向全局变量）。
 
@@ -220,7 +214,7 @@ console.log(baz); // 引用错误，baz没有被定义
 
 那函数以及自身的变量对象又是怎样的呢?在一个函数上下文中，变量对象被表示为活动对象(activation object)。
 
-##活动对象(activation object)
+## 活动对象(activation object)
 
 当函数被调用者激活，这个特殊的活动对象(activation object) 就被创建了。它包含普通参数(formal parameters) 与特殊参数(arguments)对象(具有索引属性的参数映射表)。活动对象在函数上下文中作为变量对象使用。
 
@@ -249,9 +243,8 @@ foo(10, 20);
 
 我们接下去要讲到的是第三个主要对象。众所周知，在 ECMAScript 中，我们会用到内部函数[inner functions]，在这些内部函数中，我们可能会引用它的父函数变量，或者全局的变量。我们把这些变量对象成为上下文作用域对象[scope object of the context]. 类似于上面讨论的原型链[prototype chain]，我们在这里称为作用域链[scope chain]。
 
-##作用域链(Scope Chains)
-
-> A scope chain is a list of objects that are searched for identifiers appear in the code of the context.  
+## 作用域链(Scope Chains)
+ 
 > 作用域链是一个 对象列表(list of objects) ，用以检索上下文代码中出现的标识符(identifiers) 。
 
 作用域链的原理和原型链很类似，如果这个变量在自己的作用域中没有，那么它会寻找父级的，直到最顶层。
@@ -283,10 +276,9 @@ var x = 10;
 
 在代码执行过程中，如果使用 with 或者 catch 语句就会改变作用域链。而这些对象都是一些简单对象，他们也会有原型链。这样的话，作用域链会从两个维度来搜寻。
 
-
 1. 首先在原本的作用域链
 2. 每一个链接点的作用域的链（如果这个链接点是有 prototype 的话）
-3. 
+
 我们再看下面这个例子：
 
 ```
@@ -327,7 +319,7 @@ console.log(x); // 10
 
 只要所有外部函数的变量对象都存在，那么从内部函数引用外部数据则没有特别之处——我们只要遍历作用域链表，查找所需变量。然而，如上文所提及，当一个上下文终止之后，其状态与自身将会被 销毁(destroyed) ，同时内部函数将会从外部函数中返回。此外，这个返回的函数之后可能会在其他的上下文中被激活，那么如果一个之前被终止的含有一些自由变量的上下文又被激活将会怎样?通常来说，解决这个问题的概念在 ECMAScrip t中与作用域链直接相关，被称为 (词法)闭包((lexical) closure)。
 
-##闭包(Closures)
+## 闭包(Closures)
 
 在 ECMAScript 中，函数是“第一类”对象。这个名词意味着函数可以作为参数被传递给其他函数使用 (在这种情况下，函数被称为“funargs”——“functional arguments”的缩写[译注：这里不知翻译为泛函参数是否恰当])。接收“funargs”的函数被称之为 高阶函数(higher-order functions) ，或者更接近数学概念的话，被称为 运算符(operators) 。其他函数的运行时也会返回函数，这些返回的函数被称为 function valued 函数 (有 functional value 的函数)。
 
@@ -381,8 +373,6 @@ function foo() {
 
 从上述的情况，我们似乎可以断定，在语言中，使用静态作用域是闭包的一个强制性要求。不过，在某些语言中，会提供动态和静态作用域的结合，可以允许开发员选择哪一种作用域。但是在 ECMAScript 中，只采用了静态作用域。所以 ECMAScript 完全支持使用[[Scope]]的属性。我们可以给闭包得出如下定义：
 
-> A closure is a combination of a code block (in ECMAScript this is a function) and statically/lexically saved all parent scopes.  
-> Thus, via these saved scopes a function may easily refer free variables.  
 > 闭包是一系列代码块（在ECMAScript中是函数），并且静态保存所有父级的作用域。通过这些保存的作用域来搜寻到函数中的自由变量。
 
 请注意，因为每一个普通函数在创建时保存了[[Scope]]，理论上，ECMAScript 中所有函数都是闭包。
@@ -445,15 +435,12 @@ data[2](); // 2
 
 下一章节将会讨论一个执行上下文的最后一个属性——this 指针的概念。
 
-##This 指针
+## This 指针
 
-> A this value is a special object which is related with the execution context.   
-> Therefore, it may be named as a context object (i.e. an object in which context the execution context is activated).  
 > this适合执行的上下文环境息息相关的一个特殊对象。因此，它也可以称为上下文对象\[context object\]\(激活执行上下文的上下文\)。  
 
 任何对象都可以作为上下文的 this 值。我想再次澄清对与 ECMAScript 中，与执行上下文相关的一些描述——特别是 this 的误解。通常，this 被错误地，描述为变量对象的属性。最近比如在这本书中就发现了(尽管书中提及 this 的那一章还不错)。 请牢记：
-
-> a this value is a property of the execution context, but not a property of the variable object.    
+   
 > this是执行上下文环境的一个属性，而不是某个变量对象的属性。
 
 这个特点很重要，因为和变量不同，this 是没有一个类似搜寻变量的过程。当你在代码中使用了 this，这个 this 的值就直接从执行的上下文中获取了，而不会从作用域链中搜寻。this 的值只取决中进入上下文时的情况。

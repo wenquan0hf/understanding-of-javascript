@@ -26,7 +26,7 @@ JavaScript 不包含传统的类继承模型，而是使用 prototypal 原型模
 
 通过执行各个 function 来得到结果，学习了原型之后，我们可以使用如下方式来`美化`一下代码。
 
-## 原型使用方式1：
+## 原型使用方式 1
 
 在使用原型之前，我们需要先将代码做一下小修改：
 
@@ -53,7 +53,7 @@ JavaScript 不包含传统的类继承模型，而是使用 prototypal 原型模
 
 这样，我们就可以 new Calculator 对象以后，就可以调用 add 方法来计算结果了。
 
-## 原型使用方式2： 
+## 原型使用方式 2
 
 第二种方式是，在赋值原型 prototype 的时候使用 function 立即执行的表达式来赋值，即如下格式：
 
@@ -83,7 +83,7 @@ Calculator.prototype = function () { } ();
 
 ## 再来一点
 
-###分步声明：
+### 分步声明
 
 上述使用原型的时候，有一个限制就是一次性设置了原型对象，我们再来说一下如何分来设置原型的每个属性吧。
 
@@ -100,6 +100,7 @@ BaseCalculator.prototype.subtract = function (x, y) {
     return x - y;
 };
 ```
+
 首先，声明了一个 BaseCalculator 对象，构造函数里会初始化一个小数位数的属性 decimalDigits，然后通过原型属性设置 2 个 function，分别是 add(x,y)和 subtract(x,y)，当然你也可以使用前面提到的2种方式的任何一种，我们的主要目的是看如何将 BaseCalculator 对象设置到真正的 Calculator 的原型上。
 
 ```
@@ -152,7 +153,7 @@ alert(calc.add(1, 1));
 alert(calc.decimalDigits);
 ```
 
-## 重写原型：
+## 重写原型
 
 在使用第三方 JS 类库的时候，往往有时候他们定义的原型方法是不能满足我们的需要，但是又离不开这个类库，所以这时候我们就需要重写他们的原型中的一个或者多个属性或 function，我们可以通过继续声明的同样的 add 代码的形式来达到覆盖重写前面的 add 功能，代码如下：
 
@@ -197,7 +198,7 @@ test [Bar的实例]
 
 上面的例子中，test 对象从 Bar.prototype 和 Foo.prototype 继承下来；因此，它能访问 Foo 的原型方法 method。同时，它也能够访问那个定义在原型上的 Foo 实例属性 value。需要注意的是 new Bar() 不会创造出一个新的 Foo 实例，而是重复使用它原型上的那个实例；因此，所有的 Bar 实例都会共享相同的 value 属性。
 
-## 属性查找：
+## 属性查找
 
 当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止，到查找到达原型链的顶部 - 也就是 Object.prototype - 但是仍然没有找到指定的属性，就会返回  undefined，我们来看一个例子：
 
@@ -227,7 +228,7 @@ function Foo() {}
 Foo.prototype = 1; // 无效
 ```
 
-## hasOwnProperty函数： 
+## hasOwnProperty 函数
 
 hasOwnProperty 是 Object.prototype 的一个方法，它可是个好东西，他能判断一个对象是否包含自定义属性而不是原型链上的属性，因为 hasOwnProperty 是 JavaScript 中唯一一个处理属性但是不查找原型链的函数。
 
@@ -285,6 +286,3 @@ for(var i in foo) {
 
 原型极大地丰富了我们的开发代码，但是在平时使用的过程中一定要注意上述提到的一些注意事项。
 
-## 同步与推荐
-
-深入理解 JavaScript 系列文章，包括了原创，翻译，转载等各类型的文章，如果对你有用，请推荐支持一把，给大叔写作的动力。

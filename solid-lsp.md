@@ -9,7 +9,6 @@
 > Subtypes must be substitutable for their base types.  
 > 派生类型必须可以替换它的基类型。 
 
-
 在面向对象编程里，继承提供了一个机制让子类和共享基类的代码，这是通过在基类型里封装通用的数据和行为来实现的，然后已经及类型来声明更详细的子类型，为了应用里氏替换原则，继承子类型需要在语义上等价于基类型里的期望行为。
 
 为了来更好的理解，请参考如下代码：
@@ -90,17 +89,16 @@ var maneuver = function(vehicle) {
 
 那么，我们如何避免 LSP 妨碍？不幸的话，并不是一直都是可以做到的。我们这里有几个策略我们处理这个事情。
 
-###契约（Contracts）
+### 契约（Contracts）
 
 处理 LSP 过分妨碍的一个策略是使用契约，契约清单有 2 种形式：执行说明书（executable specifications）和错误处理，在执行说明书里，一个详细类库的契约也包括一组自动化测试，而错误处理是在代码里直接处理的，例如在前置条件，后置条件，常量检查等，可以从 Bertrand Miller 的大作[《契约设计》](http://en.wikipedia.org/wiki/Design_by_contract)中查看这个技术。虽然自动化测试和契约设计不在本篇文字的范围内，但当我们用的时候我还是推荐如下内容：
-
 
 1. 检查使用测试驱动开发（Test-Driven Development）来指导你代码的设计
 2. 设计可重用类库的时候可随意使用契约设计技术
 
 对于你自己要维护和实现的代码，使用契约设计趋向于添加很多不必要的代码，如果你要控制输入，添加测试是非常有必要的，如果你是类库作者，使用契约设计，你要注意不正确的使用方法以及让你的用户使之作为一个测试工具。
 
-###避免继承
+### 避免继承
 
 避免 LSP 妨碍的另外一个测试是：如果可能的话，尽量不用继承，在Gamma的大作[《Design Patterns – Elements of Reusable Object-Orineted Software》](http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)中，我们可以看到如下建议：
 
@@ -115,7 +113,7 @@ var maneuver = function(vehicle) {
 
 举例来说，让我们来看一下 Robert C. Martin的 大作[《敏捷软件开发 原则、模式与实践》](http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)中的一个矩形类型：
 
-###矩形例子
+### 矩形例子
 
 考虑我们有一个程序用到下面这样的一个矩形对象:
 
@@ -162,6 +160,3 @@ var g = function(rectangle) {
 
 里氏替换原则（LSP）表达的意思不是继承的关系，而是任何方法（只要该方法的行为能体会另外的行为就行）。
 
-## 同步与推荐 
-
-深入理解 JavaScript 系列文章，包括了原创，翻译，转载等各类型的文章，如果对你有用，请推荐支持一把，给大叔写作的动力。

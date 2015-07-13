@@ -1,12 +1,12 @@
-#设计模式之单例模式
+# 设计模式之单例模式
 
-##介绍
+## 介绍
 
 从本章开始，我们会逐步介绍在 JavaScript 里使用的各种设计模式实现，在这里我不会过多地介绍模式本身的理论，而只会关注实现。OK，正式开始。
 
 在传统开发工程师眼里，单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。在 JavaScript 里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。
 
-##正文
+## 正文
 
 在 JavaScript 里，实现单例的方式有很多种，其中最简单的一个方式是使用对象字面量的方法，其字面量里可以包含大量的属性和方法：
 
@@ -103,9 +103,9 @@ var singletonTest = SingletonTester.getInstance({ pointX: 5 });
 console.log(singletonTest.pointX); // 输出 5 
 ```
 
-##其它实现方式
+## 其它实现方式
 
-###方法1：
+### 方法 1
 
 ```
 function Universe() {
@@ -126,7 +126,7 @@ var uni2 = new Universe();
 console.log(uni === uni2); // true
 ```
 
-###方法2：
+### 方法 2
 
 ```
 function Universe() {
@@ -148,7 +148,7 @@ console.log(uni === uni2); // true
 console.log(uni2.bang); // 123
 ````
 
-###方法3：
+### 方法 3
 
 ```
 function Universe() {
@@ -185,7 +185,7 @@ console.log(uni2.everything); // true
 console.log(uni.constructor === Universe); // true
 ```
 
-###方式4:
+### 方式 4
 
 ```
 var Universe;
@@ -209,6 +209,3 @@ a.bang = "123";
 alert(b.bang); // 123
 ```
 
-##同步与推荐
-
-深入理解 JavaScript 系列文章，包括了原创，翻译，转载等各类型的文章，如果对你有用，请推荐支持一把，给大叔写作的动力。

@@ -259,8 +259,7 @@ view.render(questionRegion, questions);
 1. 首先，questionCreator 方法的创建，可以让我们使用模板方法模式将处理问题的功能 delegat 给针对每个问题类型的扩展代码 renderInput 上。
 2. 其次，我们用一个私有的 spec 属性替换掉了前面 question 方法的构造函数属性，因为我们封装了 render 行为进行操作，不再需要把这些属性暴露给外部代码了。
 3. 第三，我们为每个问题类型创建一个对象进行各自的代码实现，但每个实现里都必须包含 renderInput 方法以便覆盖 questionCreator 方法里的 renderInput 代码，这就是我们常说的策略模式。
-4. 
-通过重构，我们可以去除不必要的问题类型的枚举 AnswerType，而且可以让 choices 作为 choiceQuestionCreator 函数的必选参数（之前的版本是一个可选参数）。
+4. 通过重构，我们可以去除不必要的问题类型的枚举 AnswerType，而且可以让 choices 作为 choiceQuestionCreator 函数的必选参数（之前的版本是一个可选参数）。
 
 ## 总结 
 
@@ -268,6 +267,3 @@ view.render(questionRegion, questions);
 
 另：懂 C#的话，不知道看了上面的代码后是否和多态的实现有些类似？其实上述的代码用原型也是可以实现的，大家可以自行研究一下。
 
-## 同步与推荐
-
-深入理解 JavaScript 系列文章，包括了原创，翻译，转载等各类型的文章，如果对你有用，请推荐支持一把，给大叔写作的动力。

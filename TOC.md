@@ -6,7 +6,7 @@
 - [S.O.L.I.D 五大原则之单一职责 SRP](solid-srp.md) 
 - [S.O.L.I.D 五大原则之开闭原则 OCP](solid-ocp.md)
 - [S.O.L.I.D 五大原则之里氏替换原则 LSP](solid-lsp.md)  
-- [根本没有“JSON对象”这回事！](no-json-object.md)
+- [根本没有“JSON 对象”这回事！](no-json-object.md)
 - [JavaScript 核心（晋级高手必读篇）](javascript-kernal.md)
 - [执行上下文（Execution Contexts）](execution-contexts.md)
 - [变量对象（Variable Object）](variable-object.md)
